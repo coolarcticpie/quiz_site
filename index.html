@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ямал - это мы! | Викторина</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('Fonts/Montserrat-Regular.woff2') format('woff2'),
+                 url('Fonts/Montserrat-Regular.woff') format('woff');
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'Montserrat';
+            src: url('Fonts/Montserrat-Bold.woff2') format('woff2'),
+                 url('Fonts/Montserrat-Bold.woff') format('woff');
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        :root {
+            --primary-color: #2B5DA2;
+            --secondary-color: #FF6B6B;
+            --background-color: #F5F7FA;
+            --text-color: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 80px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            background: linear-gradient(135deg, var(--primary-color), #1a365d);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 40px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .steps {
+            margin-top: 40px;
+        }
+
+        .step {
+            margin-bottom: 20px;
+            padding: 20px;
+            background-color: var(--background-color);
+            border-radius: 8px;
+        }
+
+        /* Initiative Form */
+        .initiative-form {
+            padding: 80px 0;
+            background-color: var(--background-color);
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .submit-button {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .submit-button:hover {
+            background-color: #1a365d;
+        }
+
+        /* Prizes Section */
+        .prizes {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .prizes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .prize-card {
+            background: var(--background-color);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s;
+        }
+
+        .prize-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .prize-card img {
+            width: 100%;
+            max-width: 200px;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .prize-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .prize-card p {
+            color: var(--text-color);
+            font-weight: 500;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 80px 0;
+            background-color: var(--background-color);
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            font-weight: 500;
+            margin-bottom: 10px;
+            cursor: pointer;
+        }
+
+        .faq-answer {
+            display: none;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 40px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 24px;
+            transition: opacity 0.3s;
+        }
+
+        .social-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .prizes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+        }
+
+        /* Organizer Section */
+        .organizer {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .organizer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .organizer-info h3,
+        .organizer-contact h3 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .organizer-info p,
+        .organizer-contact p {
+            margin-bottom: 10px;
+        }
+
+        /* Updated Footer Styles */
+        .footer-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .organizer-footer {
+            text-align: right;
+            font-size: 0.9rem;
+        }
+
+        .organizer-footer p {
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 768px) {
+            .organizer-content,
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .organizer-footer {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <img src="Logo/Logo_1.png" alt="Ямал – это мы!">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#initiative">Предложить инициативу</a></li>
+                    <li><a href="#program">Народная программа</a></li>
+                    <li><a href="#how-to">Как участие в викторине?</a></li>
+                    <li><a href="#prizes">Список подарков</a></li>
+                    <li><a href="#faq">Популярные вопросы</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Викторина "Ямал – это мы!"</h1>
+            <p>Участвуйте в электронном предварительном голосовании «Единой России» с 19 по 25 мая на сайте pg.er.ru и получайте ценные призы.</p>
+            <a href="https://quiz.myyamal.ru/verification?quizId=6" class="submit-button">Участвовать в викторине</a>
+        </div>
+    </section>
+
+    <section class="about" id="how-to">
+        <div class="container about-content">
+            <h2>О проекте</h2>
+            <p>С 14 апреля по 25 мая на Ямале пройдет викторина «Ямал – это мы»! Мероприятие приурочено к старту сбора инициатив, для формирования «Народной программы» партии «Единая Россия».</p>
+            <p>Предлагайте инициативы в программу партии, участвуйте в голосовании на праймериз и получайте ценные подарки.</p>
+            <p>Стать участником может любой житель региона старше 18 лет.</p>
+            
+            <div class="steps">
+                <h3>Что для этого нужно?</h3>
+                <div class="step">1. Принять участие в электронном предварительном голосовании на сайте pg.er.ru</div>
+                <div class="step">2. Предложить идею в народную программу</div>
+                <div class="step">3. Нажать на кнопку «Участвовать в викторине»</div>
+                <div class="step">4. Ввести номер телефона</div>
+                <div class="step">5. Подтвердить согласие на обработку персональных данных</div>
+                <div class="step">6. Ввести код из смс для авторизации</div>
+                <div class="step">7. Ответить на вопросы викторины</div>
+                <div class="step">8. Получить уникальный номер билета</div>
+                <div class="step">9. Ожидать результатов викторины</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="initiative-form" id="initiative">
+        <div class="container">
+            <h2>Предложить инициативу</h2>
+            <div class="form-container">
+                <form id="initiativeForm">
+                    <div class="form-group">
+                        <label for="name">Ваши ФИО</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Как с вами связаться</label>
+                        <input type="tel" id="phone" pattern="\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}" placeholder="+7 (XXX) XXX-XX-XX" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="initiative">Опишите вашу инициативу</label>
+                        <textarea id="initiative" maxlength="1000" required></textarea>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="consent" required>
+                        <label for="consent">Я согласен на обработку персональных данных</label>
+                    </div>
+                    <button type="submit" class="submit-button">Отправить</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section class="prizes" id="prizes">
+        <div class="container">
+            <h2>Какие подарки можно выиграть?</h2>
+            <div class="prizes-grid">
+                <div class="prize-card">
+                    <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/plp/laptops/matebook-16s.png" alt="Ноутбук HUAWEI MateBook 16S">
+                    <h3>Ноутбук HUAWEI MateBook 16S</h3>
+                    <p>Количество: 3</p>
+                </div>
+                <div class="prize-card">
+                    <img src="https://images.samsung.com/is/image/samsung/p6pim/levant/2308/gallery/levant-galaxy-s23-ultra-s918-sm-s918bzgceme-thumb-537234462" alt="Samsung Galaxy S23 Ultra">
+                    <h3>Samsung Galaxy S23 Ultra</h3>
+                    <p>Количество: 1</p>
+                </div>
+                <div class="prize-card">
+                    <img src="https://stels.ua/upload/iblock/7c7/7c7c1c1c1c1c1c1c1c1c1c1c1c1c1c1c.jpg" alt="Велосипед STELS Navigator 500 MD">
+                    <h3>Велосипед STELS Navigator 500 MD</h3>
+                    <p>Количество: 1</p>
+                </div>
+                <div class="prize-card">
+                    <img src="https://images.samsung.com/is/image/samsung/p6pim/levant/2308/gallery/levant-galaxy-watch6-r935-sm-r935fzadeue-thumb-537234475" alt="Samsung Galaxy Watch 6">
+                    <h3>Samsung Galaxy Watch 6</h3>
+                    <p>Количество: 3</p>
+                </div>
+                <div class="prize-card">
+                    <img src="https://haier.ru/upload/iblock/7c7/7c7c1c1c1c1c1c1c1c1c1c1c1c1c1c1c.jpg" alt="Телевизор Haier 43 Smart TV S1">
+                    <h3>Телевизор Haier 43 Smart TV S1</h3>
+                    <p>Количество: 3</p>
+                </div>
+                <div class="prize-card">
+                    <img src="https://i02.appmifile.com/84_operator_sg/10/03/2023/7c7c1c1c1c1c1c1c1c1c1c1c1c1c1c1c.png" alt="Робот-пылесос Xiaomi Robot Vacuum S10">
+                    <h3>Робот-пылесос Xiaomi Robot Vacuum S10</h3>
+                    <p>Количество: 5</p>
+                </div>
+                <div class="prize-card">
+                    <img src="https://avatars.mds.yandex.net/get-mpic/6781114/img_id9169997891231231231/orig" alt="Яндекс.Станция 2">
+                    <h3>Яндекс.Станция 2</h3>
+                    <p>Количество: 7</p>
+                </div>
+                <div class="prize-card">
+                    <img src="https://consumer.huawei.com/content/dam/huawei-cbg-site/common/mkt/plp/audio/freebuds-pro-2.png" alt="HUAWEI Freebuds Pro 2">
+                    <h3>HUAWEI Freebuds Pro 2</h3>
+                    <p>Количество: 10</p>
+                </div>
+                <div class="prize-card">
+                    <img src="https://deko-tools.ru/upload/iblock/7c7/7c7c1c1c1c1c1c1c1c1c1c1c1c1c1c1c.jpg" alt="Набор инструментов DEKO DKMT208">
+                    <h3>Набор инструментов DEKO DKMT208</h3>
+                    <p>Количество: 10</p>
+                </div>
+                <div class="prize-card">
+                    <img src="https://i02.appmifile.com/84_operator_sg/10/03/2023/7c7c1c1c1c1c1c1c1c1c1c1c1c1c1c1c.png" alt="Увлажнитель воздуха Xiaomi Humidifier 2 Lite">
+                    <h3>Увлажнитель воздуха Xiaomi Humidifier 2 Lite</h3>
+                    <p>Количество: 11</p>
+                </div>
+                <div class="prize-card">
+                    <img src="https://accesstyle.ru/upload/iblock/7c7/7c7c1c1c1c1c1c1c1c1c1c1c1c1c1c1c.jpg" alt="Внешний аккумулятор Accesstyle Arsenic II 20PQD">
+                    <h3>Внешний аккумулятор Accesstyle Arsenic II 20PQD</h3>
+                    <p>Количество: 216</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq" id="faq">
+        <div class="container">
+            <h2>Популярные вопросы</h2>
+            <div class="faq-item">
+                <div class="faq-question">Можно выслать подарок победителю почтой?</div>
+                <div class="faq-answer">Нет, подарки необходимо получить лично либо по доверенности в месте выдачи подарков.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Что я должен сделать, чтобы стать участником викторины?</div>
+                <div class="faq-answer">
+                    1. Принять участие в электронном предварительном голосовании на сайте pg.er.ru<br>
+                    2. Предложить идею в народную программу<br>
+                    3. Нажать на кнопку «Участвовать в викторине»<br>
+                    4. Ввести номер телефона<br>
+                    5. Подтвердить согласие на обработку персональных данных<br>
+                    6. Ввести код из смс для авторизации<br>
+                    7. Ответить на вопросы викторины<br>
+                    8. Получить уникальный номер билета<br>
+                    9. Ожидать результатов викторины
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Какой может быть форма моего участия в викторине?</div>
+                <div class="faq-answer">Участвовать в викторине можно на сайте «Ямал – это мы».</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">В какие сроки будет проводить викторина?</div>
+                <div class="faq-answer">С 14 апреля по 25 мая</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Сколько раз я могу принять участие в викторине?</div>
+                <div class="faq-answer">Принять участие в викторине можно только один раз.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Как будут определять победителей викторины?</div>
+                <div class="faq-answer">В эфире муниципальных средств массовой информации с помощью генератора случайных чисел.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Как я узнаю о выигрыше?</div>
+                <div class="faq-answer">После проведения розыгрыша система викторины автоматически уведомит победителей в смс-сообщении. Также проверить выигрышный бланк можно будет с 26 мая на сайте викторины.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Какие документы нужно предъявить, чтобы получить подарок?</div>
+                <div class="faq-answer">Выдача ценных подарков победителю викторины осуществляется по предъявлению им паспорта и СНИЛС (при стоимости подарка до 4000,00 рублей) или с предъявлением паспорта, СНИЛС, ИНН (при стоимости подарка свыше 4000,00 рублей) при условии соответствия критериям, позволяющим участвовать в викторине, и в порядке, определяемом представителем организатора.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Может ли за меня получить подарок другой человек?</div>
+                <div class="faq-answer">Да. Выдача ценных подарков, может быть осуществлена представителю победителя викторины по доверенности, оформленной в письменной форме, с одновременным предъявлением копии ИНН, копии СНИЛС, копии паспорта победителя викторины.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">В течение какого времени я могу забрать свой подарок?</div>
+                <div class="faq-answer">Подарки будут ждать своих обладателей в течение 80 календарных дней со дня проведения викторины.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Где я могу получить подарок?</div>
+                <div class="faq-answer">Победитель при предъявлении необходимых документов может получить ценный подарок в центрах выдачи.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Можно ли взамен подарка получить деньги?</div>
+                <div class="faq-answer">Нет, подарки могут быть только вещевые, замена их на денежный эквивалент невозможна.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Кто может участвовать в викторине?</div>
+                <div class="faq-answer">Участником викторины может быть любой гражданин Российской Федерации, достигший 18 лет, зарегистрированный по месту жительства на территории Ямало-Ненецкого автономного округа.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Можно ли отказаться от подарка?</div>
+                <div class="faq-answer">Можно. Более того, по истечении 80 календарных дней со дня проведения второго этапа викторины невостребованные подарки переходят в распоряжение представителя организатора.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Нужно ли платить налог за подарок, и кто это должен делать?</div>
+                <div class="faq-answer">Нужно. Победители викторины, получившие подарки стоимостью свыше 4000 рублей, обязаны самостоятельно уплатить в следующем налоговом периоде (в 2026 году) налог на доход физических лиц. Размер налога составляет 13% от стоимости подарка. Стоимость подарка указана в справке, которую можно получить у представителя организатора в месте выдачи подарков.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">Не нашел ответов на свои вопросы. Где я могу получить дополнительную информацию?</div>
+                <div class="faq-answer">Дополнительную информацию о викторине можно получить с 8:00 до 20:00 по номеру телефона: 8-800-505-45-23</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="organizer">
+        <div class="container">
+            <h2>Организатор викторины</h2>
+            <div class="organizer-content">
+                <div class="organizer-info">
+                    <h3>АНО "Арктический Центр Информационных Проектов"</h3>
+                    <p>Автономная некоммерческая организация, зарегистрирована 09.01.2018</p>
+                    <p>Юридический адрес: 629003, Ямало-Ненецкий автономный округ, г. Салехард, ул. Маяковского, влд. 44, помещ. 10</p>
+                    <p>ИНН: 8901036310</p>
+                    <p>ОГРН: 1188901000045</p>
+                </div>
+                <div class="organizer-contact">
+                    <h3>Контакты</h3>
+                    <p>Телефон: 8-800-505-45-23</p>
+                    <p>Режим работы: с 8:00 до 20:00</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-info">
+                <div class="social-links">
+                    <a href="#" target="_blank"><i class="fab fa-vk"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-odnoklassniki"></i></a>
+                    <a href="#" target="_blank"><i class="fab fa-telegram"></i></a>
+                </div>
+                <p>&copy; 2024 Ямал - это мы! Все права защищены.</p>
+            </div>
+            <div class="organizer-footer">
+                <p>Организатор: АНО "Арктический Центр Информационных Проектов"</p>
+                <p>ИНН: 8901036310, ОГРН: 1188901000045</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                answer.style.display = answer.style.display === 'block' ? 'none' : 'block';
+            });
+        });
+
+        // Phone Input Format
+        const phoneInput = document.getElementById('phone');
+        phoneInput.addEventListener('input', function(e) {
+            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,1})(\d{0,3})(\d{0,3})(\d{0,2})(\d{0,2})/);
+            e.target.value = !x[2] ? x[1] : '+7 (' + x[2] + ') ' + (x[3] ? x[3] + '-' : '') + (x[4] ? x[4] + '-' : '') + x[5];
+        });
+
+        // Form Submission
+        document.getElementById('initiativeForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would typically send the form data to your backend
+            alert('Спасибо за вашу инициативу! Мы свяжемся с вами в ближайшее время.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
