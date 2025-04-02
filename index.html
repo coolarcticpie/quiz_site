@@ -1007,7 +1007,7 @@
         }
 
         .mobile-nav li {
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .mobile-nav a {
@@ -1016,14 +1016,28 @@
             font-size: 1.1rem;
             font-weight: 500;
             display: block;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
+            padding: 12px 15px;
+            border-radius: 8px;
             transition: var(--transition);
+            background: rgba(0, 83, 163, 0.05);
         }
 
         .mobile-nav a:hover {
             color: var(--primary-color);
-            padding-left: 10px;
+            background: rgba(0, 83, 163, 0.1);
+            transform: translateX(5px);
+        }
+
+        .mobile-nav a.nav-button {
+            background: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .mobile-nav a.nav-button:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
         }
 
         .overlay {
@@ -1664,6 +1678,237 @@
                 top: 15px;
             }
         }
+
+        @media (max-width: 768px) {
+            /* Header */
+            header {
+                height: 60px;
+                padding: 10px 0;
+            }
+
+            .header-content {
+                padding: 0 15px;
+                justify-content: flex-start;
+                position: relative;
+            }
+
+            .logo {
+                height: 40px;
+                margin-right: 0;
+                margin-left: 15px;
+            }
+
+            .logo img {
+                height: 100%;
+                width: auto;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+
+            .mobile-nav {
+                display: block;
+            }
+
+            body.menu-open {
+                overflow: hidden;
+            }
+
+            /* Hero Section */
+            .hero {
+                padding: 120px 15px 60px;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+                line-height: 1.3;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+                margin: 20px auto;
+                max-width: 100%;
+            }
+
+            .hero-button {
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            /* Program Section */
+            .program-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 15px;
+            }
+
+            .program-card {
+                padding: 20px;
+            }
+
+            .program-card h3 {
+                font-size: 1.3rem;
+            }
+
+            /* Initiative Form */
+            .initiative-form {
+                padding: 30px 15px;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 12px;
+                font-size: 16px;
+            }
+
+            .submit-button {
+                width: 100%;
+                padding: 15px;
+            }
+
+            /* Quiz Section */
+            .quiz-container {
+                padding: 30px 15px;
+            }
+
+            .quiz-options {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+            .quiz-option {
+                padding: 15px;
+            }
+
+            /* Prizes Section */
+            .prizes-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 15px;
+            }
+
+            .prize-card {
+                padding: 20px;
+            }
+
+            .prize-card h3 {
+                font-size: 1.3rem;
+            }
+
+            /* FAQ Section */
+            .faq-container {
+                padding: 30px 15px;
+            }
+
+            .faq-item {
+                margin-bottom: 15px;
+            }
+
+            .faq-question {
+                padding: 15px;
+                font-size: 1rem;
+            }
+
+            .faq-answer-content {
+                padding: 15px;
+                font-size: 0.95rem;
+            }
+
+            /* Organizer Section */
+            .organizer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 30px 15px;
+            }
+
+            .organizer-info {
+                text-align: center;
+            }
+
+            .organizer-logo {
+                width: 150px;
+                height: 150px;
+            }
+
+            /* Footer */
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                padding: 30px 15px;
+                text-align: center;
+            }
+
+            .footer-logo {
+                width: 120px;
+                height: 120px;
+            }
+
+            /* Common */
+            section h2 {
+                font-size: 2rem;
+                margin-bottom: 30px;
+                padding: 0 15px;
+            }
+
+            .container {
+                padding: 0 15px;
+            }
+
+            /* Initiative Counter */
+            .initiative-counter {
+                margin: 20px 15px;
+                padding: 15px;
+            }
+
+            .counter-value {
+                font-size: 1rem;
+            }
+
+            /* Form Validation */
+            .form-group.error input,
+            .form-group.error textarea {
+                border-color: var(--error-color);
+            }
+
+            .error-message {
+                font-size: 0.85rem;
+            }
+        }
+
+        /* Small Mobile Devices */
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .program-card h3,
+            .prize-card h3 {
+                font-size: 1.2rem;
+            }
+
+            section h2 {
+                font-size: 1.8rem;
+            }
+        }
     </style>
 
     <!-- Добавляем мобильное меню -->
@@ -1675,40 +1920,40 @@
 
     <!-- Обновляем скрипт для мобильного меню -->
     <script>
-        // Мобильное меню
-        const navToggle = document.querySelector('.nav-toggle');
-        const navMenu = document.querySelector('nav ul');
-        const overlay = document.createElement('div');
-        overlay.classList.add('menu-overlay');
-        document.body.appendChild(overlay);
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+            const mobileNav = document.querySelector('.mobile-nav');
+            const menuOverlay = document.querySelector('.menu-overlay');
+            const body = document.body;
 
-        navToggle.addEventListener('click', () => {
-            navToggle.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            document.body.classList.toggle('menu-open');
-            overlay.classList.toggle('active');
-        });
-
-        // Закрытие меню при клике на пункт или оверлей
-        const closeMenu = () => {
-            navToggle.classList.remove('active');
-            navMenu.classList.remove('active');
-            document.body.classList.remove('menu-open');
-            overlay.classList.remove('active');
-        };
-
-        navMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', closeMenu);
-        });
-
-        overlay.addEventListener('click', closeMenu);
-
-        // Предотвращение скролла при открытом меню
-        document.body.addEventListener('touchmove', (e) => {
-            if (document.body.classList.contains('menu-open')) {
-                e.preventDefault();
+            function toggleMobileMenu() {
+                mobileMenuToggle.classList.toggle('active');
+                mobileNav.classList.toggle('active');
+                menuOverlay.classList.toggle('active');
+                body.classList.toggle('menu-open');
             }
-        }, { passive: false });
+
+            mobileMenuToggle.addEventListener('click', toggleMobileMenu);
+            menuOverlay.addEventListener('click', toggleMobileMenu);
+
+            // Закрываем меню при клике на ссылку
+            const mobileLinks = mobileNav.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    toggleMobileMenu();
+                    
+                    if (targetSection) {
+                        setTimeout(() => {
+                            targetSection.scrollIntoView({ behavior: 'smooth' });
+                        }, 300);
+                    }
+                });
+            });
+        });
     </script>
 
     <!-- Дополнительные стили для оверлея и блокировки скролла -->
@@ -1771,11 +2016,12 @@
     <div class="mobile-nav">
         <ul>
             <li><a href="#program">Народная программа</a></li>
+            <li><a href="#about">О нас</a></li>
+            <li><a href="#initiative">Предложить инициативу</a></li>
             <li><a href="#quiz">Викторина</a></li>
             <li><a href="#prizes">Призы</a></li>
             <li><a href="#faq">FAQ</a></li>
-            <li><a href="#organizer">Контакты</a></li>
-            <li><a href="#initiative" class="nav-button">Предложить инициативу</a></li>
+            <li><a href="#organizer">Организатор</a></li>
         </ul>
     </div>
 
